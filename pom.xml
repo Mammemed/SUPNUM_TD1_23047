@@ -31,12 +31,46 @@
 		<spring-modulith.version>1.4.4</spring-modulith.version>
 	</properties>
 	<dependencies>
-	
+
 	<dependency>
     <groupId>org.springdoc</groupId>
     <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
     <version>2.6.0</version>
 </dependency>
+
+<!-- Spring Web Services (SOAP) -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web-services</artifactId>
+</dependency>
+
+<!-- JAXB pour marshaller/démarshaller les objets Java <-> XML -->
+<dependency>
+    <groupId>jakarta.xml.bind</groupId>
+    <artifactId>jakarta.xml.bind-api</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>wsdl4j</groupId>
+    <artifactId>wsdl4j</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.3.1</version>
+</dependency>
+
+<dependency>
+    <groupId>org.glassfish.jaxb</groupId>
+    <artifactId>jaxb-runtime</artifactId>
+    <version>2.3.1</version>
+</dependency>
+
+
+
+
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -90,6 +124,42 @@
 
 	<build>
 		<plugins>
+
+
+		<plugin>
+    <groupId>org.jvnet.jaxb2.maven2</groupId>
+    <artifactId>maven-jaxb2-plugin</artifactId>
+    <version>0.14.0</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>generate</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <schemaDirectory>src/main/resources</schemaDirectory>
+        <schemas>
+            <schema>
+                <fileset>
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <include>servers.xsd</include>
+                    </includes>
+                </fileset>
+            </schema>
+        </schemas>
+        <packageName>com.supnum.td1.soap.ws</packageName>
+    </configuration>
+</plugin>
+
+
+
+
+
+
+
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
