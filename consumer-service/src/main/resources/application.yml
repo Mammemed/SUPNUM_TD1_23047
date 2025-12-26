@@ -1,0 +1,16 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: consumer-service
+
+middle:
+  service:
+    url: http://localhost:8081
+
+logging:
+  level:
+    root: INFO
+    com.supnum.consumer: DEBUG
+

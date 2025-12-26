@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: middle-service
+
+soap:
+  service:
+    url: http://localhost:8085/ws
+
+logging:
+  level:
+    root: INFO
+    com.supnum.middle: DEBUG
+
